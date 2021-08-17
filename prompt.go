@@ -10,7 +10,7 @@ import (
 	"unicode/utf8"
 
 	"github.com/fatih/color"
-	"github.com/isacikgoz/gitin/term"
+	"github.com/isacikgoz/prompt/term"
 )
 
 type keyEvent struct {

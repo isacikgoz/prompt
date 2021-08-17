@@ -5,7 +5,7 @@ import (
 	"sort"
 
 	"github.com/fatih/color"
-	"github.com/isacikgoz/gitin/term"
+	"github.com/isacikgoz/prompt/term"
 )
 
 func itemText(item interface{}, matches []int, selected bool) [][]term.Cell {

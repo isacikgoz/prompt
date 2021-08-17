@@ -5,27 +5,15 @@ Prompt for cli apps. Currently in development, use with care.
 ## Use
 
 ```Go
-var p *promt.Prompt
-var selection string
-
-selFn = func(item interface{}) error {
-		selection = fmt.Sprintf("%s", item)
-		p.Stop()
-		return nil
-	}
-
-infoFn = func(item interface{}) [][]term.Cell {
-	i := term.Cprint("WARNING: this operation cannot be undone", color.FgRed)
-	return [][]term.Cell{i}
-}
-
-p = prompt.Create("Question", &prompt.Options{LineSize: 5}, []string{"yes", "no"},
- prompt.WithSelectionHandler(sel), prompt.WithInformation(infoFn))
-
-err = p.Run(context.Background())
+sel, err := prompt.NewSelection("are you sure?", []string{"yes", "no"}, "* pick wisely", 2)
 if err != nil {
-	return err
+	log.Fatal(err)
 }
 
-fmt.Printf("%s is selected\n", selection)
+answer, err := sel.Run()
+if err != nil {
+	log.Fatal(err)
+}
+
+log.Printf("selected %q\n", answer)
 ```
