@@ -32,7 +32,7 @@ func NewSelection(question string, answers []string, footnote string, maxLineSiz
 		return [][]term.Cell{i}
 	}
 
-	sel.prompt = Create("Question", &Options{LineSize: maxLineSize}, list,
+	sel.prompt = Create(question, &Options{LineSize: maxLineSize}, list,
 		WithSelectionHandler(selFn), WithInformation(infoFn))
 
 	return sel, nil
